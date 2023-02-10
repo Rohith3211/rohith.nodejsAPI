@@ -37,7 +37,7 @@ app.post("/register", async (request, response) => {
 
   const dbUser = await db.get(selectData);
   if (dbUser === undefined) {
-    if (password.len < 5) {
+    if (password.length < 5) {
       response.status(400);
       response.send("Password is too short");
     } else {
@@ -99,7 +99,7 @@ app.put("/change-password", async (request, response) => {
   const isPasswordMatch = await bcrypt.compare(oldPassword, dbUser.password);
 
   if (isPasswordMatch === true) {
-    if (newPassword.len < 5) {
+    if (newPassword.length < 5) {
       response.status(400);
       response.send("Password is too short");
     } else {
